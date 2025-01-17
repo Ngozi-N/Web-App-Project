@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/cloudboostauk/webApp-Quizz-B.git'
+                git branch: 'main', url: 'https://github.com/Ngozi-N/Web-App-Project.git'
             }
         }
         stage('Terraform Deploy') {
