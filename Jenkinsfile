@@ -14,10 +14,17 @@ pipeline {
         }
         stage('Terraform Deploy') {
             steps {
-                sh '''
-                terraform init
-                terraform apply -auto-approve
-                '''
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-credentials',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    sh '''
+                    terraform init
+                    terraform apply -auto-approve
+                    '''
+                }
             }
         }
         stage('Build Docker Image') {
