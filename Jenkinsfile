@@ -3,7 +3,7 @@ pipeline {
     environment {
         AWS_REGION = 'eu-west-2'
         EKS_CLUSTER_NAME = 'webapp-cluster'
-        DOCKER_IMAGE = 'your-dockerhub-username/webapp:latest'
+        DOCKER_IMAGE = 'ngozin/webapp:latest'
         KUBECONFIG = '/home/jenkins/.kube/config'
     }
     stages {
